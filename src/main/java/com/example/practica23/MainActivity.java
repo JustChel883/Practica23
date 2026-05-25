@@ -21,22 +21,22 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         TextView textSkip = findViewById(R.id.textSkip);
 
-        // Создаем список экранов
+
         List<OnboardItem> items = new ArrayList<>();
         items.add(new OnboardItem("Анализы", "Экспресс сбор и получение проб", R.drawable.illustration));
         items.add(new OnboardItem("Уведомления", "Вы быстро узнаете о результатах", R.drawable.__2022_09_17__19_21_1));
         items.add(new OnboardItem("Мониторинг", "Наши врачи всегда наблюдают\nза вашими показателями здоровья", R.drawable._130_1));
 
-        // Подключаем адаптер
+
         OnboardAdapter adapter = new OnboardAdapter(items);
         viewPager.setAdapter(adapter);
 
-        // Связываем точки (TabLayout) со свайпером (ViewPager2)
+
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
-            // Здесь можно оставить пустым, вкладки нужны только для отображения точек
+
         }).attach();
 
-        // Переход на экран регистрации при нажатии "Пропустить"
+
         textSkip.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, LoginandregistrationActivity.class);
             startActivity(intent);
