@@ -1,24 +1,45 @@
 package com.example.practica23;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.viewpager2.widget.ViewPager2;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.onboard1);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        ViewPager2 viewPager = findViewById(R.id.viewPager);
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
+        TextView textSkip = findViewById(R.id.textSkip);
+
+        // Создаем список экранов
+        List<OnboardItem> items = new ArrayList<>();
+        items.add(new OnboardItem("Анализы", "Экспресс сбор и получение проб", R.drawable.illustration));
+        items.add(new OnboardItem("Уведомления", "Вы быстро узнаете о результатах", R.drawable.__2022_09_17__19_21_1));
+        items.add(new OnboardItem("Мониторинг", "Наши врачи всегда наблюдают\nза вашими показателями здоровья", R.drawable._130_1));
+
+        // Подключаем адаптер
+        OnboardAdapter adapter = new OnboardAdapter(items);
+        viewPager.setAdapter(adapter);
+
+        // Связываем точки (TabLayout) со свайпером (ViewPager2)
+        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
+            // Здесь можно оставить пустым, вкладки нужны только для отображения точек
+        }).attach();
+
+        // Переход на экран регистрации при нажатии "Пропустить"
+        textSkip.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, LoginandregistrationActivity.class);
+            startActivity(intent);
         });
     }
 }

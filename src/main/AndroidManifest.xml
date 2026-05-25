@@ -11,24 +11,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Practica23">
-        <activity
-            android:name=".Onboard3Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Onboard2Activity"
-            android:exported="false" />
+
         <activity
             android:name=".LoginandregistrationActivity"
             android:exported="false" />
-        <activity
-            android:name=".ScreensaverActivity"
-            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/SplashTheme"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

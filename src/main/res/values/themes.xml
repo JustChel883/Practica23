@@ -6,4 +6,9 @@
     </style>
 
     <style name="Theme.Practica23" parent="Base.Theme.Practica23" />
+
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/background_splash</item>
+    </style>
+
 </resources>
