@@ -1,5 +1,6 @@
 package com.example.practica23;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -18,6 +20,7 @@ public class CardCreateActivity extends AppCompatActivity {
 
     private EditText etLastName, etFirstName, etBirthDate, etGender;
     private Button btnCreateCard;
+    private TextView tvSkip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,7 @@ public class CardCreateActivity extends AppCompatActivity {
         etBirthDate = findViewById(R.id.etBirthDate);
         etGender = findViewById(R.id.etGender);
         btnCreateCard = findViewById(R.id.btnCreateCard);
+        tvSkip = findViewById(R.id.tvSkip);
 
         TextWatcher watcher = new TextWatcher() {
             @Override
@@ -62,6 +66,16 @@ public class CardCreateActivity extends AppCompatActivity {
                 return true;
             });
             popupMenu.show();
+        });
+
+        tvSkip.setOnClickListener(v -> {
+            Intent intent = new Intent(CardCreateActivity.this, AnalysesActivity.class);
+            startActivity(intent);
+        });
+
+        btnCreateCard.setOnClickListener(v -> {
+            Intent intent = new Intent(CardCreateActivity.this, AnalysesActivity.class);
+            startActivity(intent);
         });
     }
 
